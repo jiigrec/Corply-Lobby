@@ -1,0 +1,10 @@
+main: gq.antoine.corply.lobby.main.EventManager
+name: CorplyLobby
+version : 0.5.3	
+author: UyL_Optimus13
+commands:
+    nick:
+    gm:
+    npc:
+    kick:
+    mute:
