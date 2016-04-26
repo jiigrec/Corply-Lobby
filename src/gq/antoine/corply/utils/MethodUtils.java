@@ -188,7 +188,8 @@ public class MethodUtils implements Listener {
 		Player p = e.getPlayer();
 		if(p.isBanned() == true){
 			e.disallow(Result.KICK_BANNED, isBannedMessage());	
+		}else{
+			e.allow();
 		}
-		e.allow();
 	}
 }
