@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
@@ -118,10 +117,6 @@ public class MethodUtils implements Listener {
 		nmsEntity.f(tag);
 	}
 	
-	public static void sendConsole(ConsoleCommandSender cm, String text){
-		cm.sendMessage(text);
-	}
-	
 	public static void sendPlayer(Player p, String s) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Connect");
@@ -160,22 +155,14 @@ public class MethodUtils implements Listener {
 		isMuted.put(target, target);
 	}
 	
-	public static void setMutedOffline(OfflinePlayer offlinetarget){
-		isMutedOffline.put(offlinetarget, offlinetarget);
-	}
-	
 	public static void setUnmuted(Player target){
 		isMuted.remove(target, target);
-	}
-	
-	public static void setUnmutedOffline(OfflinePlayer offlinetarget){
-		isMuted.remove(offlinetarget, offlinetarget);
 	}
 	
 	@EventHandler
 	public void isMutedChat(AsyncPlayerChatEvent e){
 		Player target = e.getPlayer();
-		if(isMuted.containsKey(target) || isMutedOffline.containsKey(target)){
+		if(isMuted.containsKey(target)){
 			e.setCancelled(true);
 			target.sendMessage(isMutedMessage());
 		}else{

@@ -54,17 +54,7 @@ public class ModeratorCommands implements CommandExecutor{
 							}
 						}
 					}else{
-						if(MethodUtils.isMutedOffline.containsKey(offlinetarget)){
-							MethodUtils.setUnmutedOffline(offlinetarget);
-						}else{
-							MethodUtils.setMutedOffline(offlinetarget);
-							for(Player pls : Bukkit.getOnlinePlayers()){
-								if(p.hasPermission("m.mute.recive")){
-									p.sendMessage(MethodUtils.getSystem()+" §c"+offlinetarget.getName()+" §7a été muté par "+p.getName());
-									MethodUtils.sendActionBar(p, MethodUtils.getSystem()+" §c"+offlinetarget.getName()+" §7a été muté par "+p.getName());
-								}
-							}
-						}
+						p.sendMessage(MethodUtils.getSystem()+" §cErreur, le joueur doit être en ligne !");
 					}
 				}
 			}
