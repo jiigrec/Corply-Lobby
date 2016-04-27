@@ -114,6 +114,7 @@ public class EventManager extends JavaPlugin implements Listener{
 		this.getCommand("npc").setExecutor(new LobbyNPCManager());
 		this.getCommand("kick").setExecutor(new ModeratorCommands());
 		this.getCommand("mute").setExecutor(new ModeratorCommands());
+		this.getCommand("ban").setExecutor(new ModeratorCommands());
 	}
 	
 	public static EventManager getPlugin(){
