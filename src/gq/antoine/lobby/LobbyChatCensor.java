@@ -46,6 +46,9 @@ public class LobbyChatCensor implements Listener{
 			e.setCancelled(true);
 			p.sendMessage("§6Spam > §cVeuillez ne pas polluer le chat...! §l(2e Avertissement)");
 			spamkick.put(p, e.getMessage());
+		}else{
+			spam1.remove(p, e.getMessage());
+			spam2.remove(p, e.getMessage());
 		}
 		
 		if(spamkick.containsKey(p) && e.getMessage().equals(spam2.get(p))){
