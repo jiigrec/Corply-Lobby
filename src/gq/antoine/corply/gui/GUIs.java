@@ -99,7 +99,7 @@ public class GUIs implements Listener {
 			case SKULL_ITEM:
 				e.setCancelled(true);
 				break;
-			case SNOW_BLOCK:
+			case SNOW_BALL:
 				e.setCancelled(true);
 				BungeeServerConnect.connectSpleef(p);
 				break;
