@@ -31,7 +31,7 @@ public class LobbyChatCensor implements Listener{
 			p.sendMessage("§6Censure > §cVeuillez rester poli avec les autres joueurs.");
 		}
 		
-		spam1.put(p, e.getMessage());
+		
 		
 		if(spam1.containsKey(p) && e.getMessage().equals(spam1.get(p))){
 			e.setCancelled(true);
@@ -53,8 +53,10 @@ public class LobbyChatCensor implements Listener{
 		
 		if(spamkick.containsKey(p) && e.getMessage().equals(spam2.get(p))){
 			e.setCancelled(true);
-			p.kickPlayer("§6Spam > §cVeuillez ne pas polluer le chat...! §l(Dernier Avertissement !)");
+			p.kickPlayer("§6Spam > §cVeuillez ne pas polluer le chat...! ");
 		}
+		
+		spam1.put(p, e.getMessage());
 		
 	}
 }

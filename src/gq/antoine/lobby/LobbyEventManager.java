@@ -43,11 +43,12 @@ public class LobbyEventManager implements Listener{
 	}
 	
 	@EventHandler
-	public void onEntityDamage(EntityDamageEvent e, Player p) {
+	public void onEntityDamage(EntityDamageEvent e) {
 		if(e.getEntity() instanceof Player) {
 			if (e.getCause().equals(DamageCause.FALL)){	
 				e.setCancelled(true);
 			if (e.getCause().equals(DamageCause.VOID)){
+				Player p = (Player) e.getEntity();
 				p.teleport(spawn);
 			}
 			}
