@@ -1,5 +1,6 @@
 package gq.antoine.corply.utils;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
@@ -22,6 +23,7 @@ import com.google.common.io.ByteStreams;
 
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle.EnumTitleAction;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer;
@@ -86,6 +88,23 @@ public class MethodUtils implements Listener {
 		
 		PacketPlayOutChat actionBarPacket = new PacketPlayOutChat(actionBarComp, (byte)2);
 		((CraftPlayer) p).getHandle().playerConnection.sendPacket(actionBarPacket);
+	}
+	
+	public static void sendTabList(Player p, String header, String footer) {
+		IChatBaseComponent tabTitle = ChatSerializer.a("{\"text\": \""+header+"\"}");
+        IChatBaseComponent tabFoot = ChatSerializer.a("{\"text\": \""+footer+"\"}");
+     
+        PacketPlayOutPlayerListHeaderFooter headerPacket = new PacketPlayOutPlayerListHeaderFooter(tabTitle);
+        
+        try {
+            Field field = headerPacket.getClass().getDeclaredField("b");
+            field.setAccessible(true);
+            field.set(headerPacket, tabFoot);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            ((CraftPlayer) p).getHandle().playerConnection.sendPacket(headerPacket);
+        }
 	}
 	
 	public static void sendTitle(Player p, String title, String subtitle, Integer time){

@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/jyroda/Documents/CoplyAPI fix by ji_igrec.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jyroda/Downloads/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jyroda/Documents/Spigot.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
