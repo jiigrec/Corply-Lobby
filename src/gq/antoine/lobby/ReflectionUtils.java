@@ -1,5 +1,7 @@
 package gq.antoine.lobby;
 
+//TODO ne pas utiliser reflection si possible, ca lag :)
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

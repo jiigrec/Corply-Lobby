@@ -1,9 +1,8 @@
 package gq.antoine.corply.utils;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
+import java.util.ArrayList;
 
-import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
@@ -15,11 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
-
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
@@ -31,8 +25,8 @@ import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
 public class MethodUtils implements Listener {
 	
-	public static HashMap<Player, Player> isMuted = new HashMap<Player, Player>();
-	public static HashMap<OfflinePlayer, OfflinePlayer> isMutedOffline = new HashMap<OfflinePlayer, OfflinePlayer>();
+	public static ArrayList<Player> isMuted = new ArrayList<Player>();
+	public static ArrayList<OfflinePlayer> isMutedOffline = new ArrayList<OfflinePlayer>();
 	
 	static String System = "§7[§c§lSystème§7]";
 	static String Error = getSystem()+" §c§lTu n'as pas la permission d'effectuer cela !";
@@ -58,8 +52,6 @@ public class MethodUtils implements Listener {
 
 	
 	/*
-	 * TODO Corriger le setPrefix
-	 */
 	@SuppressWarnings("deprecation")
 	public static void setPrefix(Player p, String prefix){
 		Scoreboard s = Bukkit.getScoreboardManager().getMainScoreboard();
@@ -72,15 +64,15 @@ public class MethodUtils implements Listener {
 		
 		t.setDisplayName(prefix);
 		t.addPlayer(p);
-	}
+	} */  //TODO: Enlever ce code, inutilisé (nouveau système pour TabList)
 	
-	public static void sendNMSChat(Player p, String text){
+	/*public static void sendNMSChat(Player p, String text){
 		IChatBaseComponent c = ChatSerializer.a
 				("{\"text\": \"" + text + "\"}");
 		
 		PacketPlayOutChat packet = new PacketPlayOutChat(c);
 		((CraftPlayer) p).getHandle().playerConnection.sendPacket(packet);
-	}
+	} */ //TODO celui la aussi
 	
 	public static void sendActionBar(Player p, String text){
 		IChatBaseComponent actionBarComp = ChatSerializer
@@ -136,13 +128,6 @@ public class MethodUtils implements Listener {
 		nmsEntity.f(tag);
 	}
 	
-	public static void sendPlayer(Player p, String s) {
-		ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF("Connect");
-        out.writeUTF(s);
-        p.sendPluginMessage(Bukkit.getPluginManager().getPlugin("CorplyLobby"), "BungeeCord", out.toByteArray());
-	}
-	
 	@SuppressWarnings("deprecation")
 	public static void banPlayer(Player target, CommandSender p){
 		target.kickPlayer("§7Vous avez été §cbanni §7!");
@@ -171,17 +156,17 @@ public class MethodUtils implements Listener {
 		
 	}
 	public static void setMuted(Player target){
-		isMuted.put(target, target);
+		isMuted.add(target);
 	}
 	
 	public static void setUnmuted(Player target){
-		isMuted.remove(target, target);
+		isMuted.remove(target);
 	}
 	
 	@EventHandler
 	public void isMutedChat(AsyncPlayerChatEvent e){
 		Player target = e.getPlayer();
-		if(isMuted.containsKey(target)){
+		if(isMuted.contains(target)){
 			e.setCancelled(true);
 			target.sendMessage(isMutedMessage());
 		}else{

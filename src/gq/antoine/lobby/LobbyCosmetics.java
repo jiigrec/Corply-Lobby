@@ -140,6 +140,8 @@ public class LobbyCosmetics implements Listener, CommandExecutor {
 		p.openInventory(cosmetics);
 	}
 
+	//TODO: recopier depuis cosmetics le code entier (marchera sans problèmes)
+	
 	@EventHandler
 	public void onInteractInventoryMain(InventoryClickEvent e) {
 		if (e.getInventory().getName().equalsIgnoreCase("§0Cosmétiques")) {

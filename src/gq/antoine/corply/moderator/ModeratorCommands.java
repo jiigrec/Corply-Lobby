@@ -42,7 +42,7 @@ public class ModeratorCommands implements CommandExecutor{
 					p.sendMessage(MethodUtils.getSystem()+" §cPas assez d'arguments ! /mute <Joueur>");
 				}else{
 					if(target.isOnline()){
-						if(MethodUtils.isMuted.containsKey(target)){
+						if(MethodUtils.isMuted.contains(target)){
 							MethodUtils.setUnmuted(target);
 						}else{
 							MethodUtils.setMuted(target);

@@ -31,17 +31,10 @@ public class LobbyChatCensor implements Listener{
 			p.sendMessage("§6Censure > §cVeuillez rester poli avec les autres joueurs.");
 		}
 		
-		
-		
-		if(spam1.containsKey(p) && e.getMessage().equals(spam1.get(p))){
+		if(spamkick.containsKey(p) && e.getMessage().equals(spam2.get(p))){
 			e.setCancelled(true);
-			p.sendMessage("§6Spam > §cVeuillez ne pas polluer le chat...!");
-			spam2.put(p, e.getMessage());
-		}else{
-			spam1.remove(p, e.getMessage());
-			spam2.remove(p, e.getMessage());
+			p.kickPlayer("§6Spam > §cVeuillez ne pas polluer le chat...! ");
 		}
-		
 		if(spam2.containsKey(p) && e.getMessage().equals(spam1.get(p))){
 			e.setCancelled(true);
 			p.sendMessage("§6Spam > §cVeuillez ne pas polluer le chat...! §l(2e Avertissement)");
@@ -51,9 +44,13 @@ public class LobbyChatCensor implements Listener{
 			spam2.remove(p, e.getMessage());
 		}
 		
-		if(spamkick.containsKey(p) && e.getMessage().equals(spam2.get(p))){
+		if(spam1.containsKey(p) && e.getMessage().equals(spam1.get(p))){
 			e.setCancelled(true);
-			p.kickPlayer("§6Spam > §cVeuillez ne pas polluer le chat...! ");
+			p.sendMessage("§6Spam > §cVeuillez ne pas polluer le chat...!");
+			spam2.put(p, e.getMessage());
+		}else{
+			spam1.remove(p, e.getMessage());
+			//spam2.remove(p, e.getMessage());
 		}
 		
 		spam1.put(p, e.getMessage());

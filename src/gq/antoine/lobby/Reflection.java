@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 
 import org.bukkit.Bukkit;
 
+
+//TODO: ne pas utiliser reflection si possible, ca lag :)
+
 public class Reflection {
 	public static String getVersion() {
 		String name = Bukkit.getServer().getClass().getPackage().getName();

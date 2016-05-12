@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import gq.antoine.corply.bungee.BungeeServerConnect;
 import gq.antoine.lobby.LobbyEventManager;
 import gq.jeanyves.corply.spigot.api.CorplyAPI;
+import gq.jeanyves.corply.spigot.api.PlayerData;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
@@ -361,11 +362,12 @@ public class GUIs implements Listener {
 		SkullMeta meta = (SkullMeta) playerhead.getItemMeta();
 		meta.setOwner(p.getName());
 		meta.setDisplayName("§6" + p.getName());
+		PlayerData d = CorplyAPI.getAPI().getData(p);
 		ArrayList<String> infop = new ArrayList<String>();
-		infop.add("§7>> §6Grade : " + CorplyAPI.getAPI().getData(p).getPrefix());
+		infop.add("§7>> §6Grade : " + d.getPrefix());
 		infop.add(" ");
-		infop.add("§7>> §eCorply§lCoins §7: §bBientôt");
-		infop.add("§7>> §6Corply§lGold §7: §bBientôt");
+		infop.add("§7>> §eCorply§lCoins §7: §b" + d.getBalance());
+		infop.add("§7>> §6Corply§lGold §7: §b" + d.getGold());
 		infop.add(" ");
 		infop.add("§7>> §dB§co§4o§1s§3t§ee§8r §7: §bBientôt");
 		meta.setLore(infop);
@@ -507,9 +509,10 @@ public class GUIs implements Listener {
 		 * infop.add("§7>> §6Grade : "
 		 * +CorplyAPI.getAPI().getData(p).getPrefix());
 		 */
+		PlayerData d2 = CorplyAPI.getAPI().getData(p);
 		infop.add(" ");
-		infop.add("§7>> §eCorply§lCoins §7: §bBientôt");
-		infop.add("§7>> §6Corply§lGold §7: §bBientôt");
+		infop.add("§7>> §eCorply§lCoins §7: §b" + d2.getBalance());
+		infop.add("§7>> §6Corply§lGold §7: §b" + d2.getGold());
 		infop.add(" ");
 		infop.add("§7>> §dB§co§4o§1s§3t§ee§8r §7: §bBientôt");
 		meta.setLore(infop);
@@ -527,10 +530,11 @@ public class GUIs implements Listener {
 		meta.setOwner(p.getName());
 		meta.setDisplayName("§6" + p.getName());
 		ArrayList<String> infop = new ArrayList<String>();
+		PlayerData d = CorplyAPI.getAPI().getData(p);
 		infop.add("§7>> §6Grade : " + CorplyAPI.getAPI().getData(p).getPrefix());
 		infop.add(" ");
-		infop.add("§7>> §eCorply§lCoins §7: §bBientôt");
-		infop.add("§7>> §6Corply§lGold §7: §bBientôt");
+		infop.add("§7>> §eCorply§lCoins §7: §b" + d.getBalance());
+		infop.add("§7>> §6Corply§lGold §7: §b" + d.getGold());
 		infop.add(" ");
 		infop.add("§7>> §dB§co§4o§1s§3t§ee§8r §7: §bBientôt");
 		meta.setLore(infop);

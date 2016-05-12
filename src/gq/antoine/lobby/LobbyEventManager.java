@@ -45,7 +45,7 @@ public class LobbyEventManager implements Listener{
 		if(CorplyAPI.getAPI().getData(p).getRank() >= 75){
 			p.setAllowFlight(true);
 		}
-		p.setPlayerListName(CorplyAPI.getAPI().getData(p).getTabName());
+		p.setPlayerListName(CorplyAPI.getAPI().getData(p).getTabName()); //Change nom dans tablist
 		e.setJoinMessage(CorplyAPI.getAPI().getData(p).getDisplayName() + " a rejoint le jeu !");
     
 	}
