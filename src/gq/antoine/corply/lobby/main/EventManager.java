@@ -34,7 +34,6 @@ public class EventManager extends JavaPlugin implements Listener{
 
 	
 	private static EventManager instance;
-	
 	public static FileConfiguration database;
 	public static File dFile;
 	
