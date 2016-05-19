@@ -113,6 +113,9 @@ public class EventManager extends JavaPlugin implements Listener{
 		this.getCommand("npc").setExecutor(new LobbyNPCManager());
 		this.getCommand("kick").setExecutor(new ModeratorCommands());
 		this.getCommand("mute").setExecutor(new ModeratorCommands());
+
+	    
+	    
 		//TODO changer le nom : déja utilisé par le serveur
 		//this.getCommand("ban").setExecutor(new ModeratorCommands());
 	}
