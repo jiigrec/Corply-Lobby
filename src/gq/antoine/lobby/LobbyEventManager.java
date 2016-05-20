@@ -47,7 +47,6 @@ public class LobbyEventManager implements Listener{
 		e.setQuitMessage("");
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
 		final Player p = e.getPlayer();
@@ -67,7 +66,7 @@ public class LobbyEventManager implements Listener{
 		}
 		final ScoreboardManager manager = Bukkit.getScoreboardManager();
 		//Un scoreboard par personne, updaté tous les 5 tick
-		players.put(p, Bukkit.getScheduler().scheduleAsyncRepeatingTask(EventManager.getPlugin(), new Runnable() {
+		players.put(p, Bukkit.getScheduler().scheduleSyncRepeatingTask(EventManager.getPlugin(), new Runnable() {
 			@Override
 			public void run(){
 				Scoreboard corplyboard = manager.getNewScoreboard();
