@@ -82,10 +82,8 @@ public class LobbyEventManager implements Listener{
 			    online.setScore(-2);
 		        Score blank = scoreboard.getScore("§1 ");
 		        blank.setScore(4);
-		        Score score = scoreboard.getScore("§6> Rang : ");
-		        score.setScore(3);
-		        Score pseudo = scoreboard.getScore("§a"+ d.getPrefix());
-		        pseudo.setScore(2);       
+		        Score score = scoreboard.getScore("§6> Rang : §a" + d.getPrefix());
+		        score.setScore(3);      
 		        Score blank1 = scoreboard.getScore("§2 ");
 		        blank1.setScore(1);  
 		        Score blank2 = scoreboard.getScore("§3 ");
@@ -98,9 +96,9 @@ public class LobbyEventManager implements Listener{
 		        servername.setScore(-5);
 		        Score blank4 = scoreboard.getScore("§5 ");
 		        blank4.setScore(-6);
-		        Score score2 = scoreboard.getScore("§6> CORPLYCoins (â›€) : §c" + d.getBalance());
+		        Score score2 = scoreboard.getScore("§6> CORPLYCoins : §c" + d.getBalance());
 		        score2.setScore(-7);
-		        Score score3 = scoreboard.getScore("§6> CORPLYGold (â›�) : §c" + d.getGold());
+		        Score score3 = scoreboard.getScore("§6> CORPLYGold : §c" + d.getGold());
 		        score3.setScore(-8);
 		        p.setScoreboard(corplyboard);
 			}
