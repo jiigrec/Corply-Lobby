@@ -47,14 +47,15 @@ public class LobbyEventManager implements Listener{
 		e.setQuitMessage("");
 	}
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
-		Player p = e.getPlayer();
+		final Player p = e.getPlayer();
 		p.teleport(spawn);
 		p.setGameMode(GameMode.ADVENTURE);
 		MethodUtils.sendTitle(p, "§6CORPLY !", "§f§lBon jeu sur §6CORPLY §f§l!", 65);
 		MethodUtils.sendTabList(p, "§6CORPLY !", "§f§lBon jeu sur §6CORPLY §f§l!");
-		PlayerData d = CorplyAPI.getAPI().getData(p);
+		final PlayerData d = CorplyAPI.getAPI().getData(p);
 		if(d.getRank() >= 75){
 			p.setAllowFlight(true);
 		}
@@ -64,9 +65,9 @@ public class LobbyEventManager implements Listener{
 		} else {
 			e.setJoinMessage("");
 		}
-		ScoreboardManager manager = Bukkit.getScoreboardManager();
+		final ScoreboardManager manager = Bukkit.getScoreboardManager();
 		//Un scoreboard par personne, updaté tous les 5 tick
-		players.put(p, Bukkit.getScheduler().scheduleSyncRepeatingTask(EventManager.getPlugin(), new Runnable() {
+		players.put(p, Bukkit.getScheduler().scheduleAsyncRepeatingTask(EventManager.getPlugin(), new Runnable() {
 			@Override
 			public void run(){
 				Scoreboard corplyboard = manager.getNewScoreboard();
