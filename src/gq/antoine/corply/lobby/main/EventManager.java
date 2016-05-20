@@ -18,7 +18,6 @@ import gq.antoine.corply.commands.Commands;
 import gq.antoine.corply.gui.GUIs;
 import gq.antoine.corply.moderator.ModeratorCommands;
 import gq.antoine.corply.utils.MethodUtils;
-import gq.antoine.lobby.LobbyChatCensor;
 import gq.antoine.lobby.LobbyCosmetics;
 import gq.antoine.lobby.LobbyEventManager;
 import gq.antoine.lobby.LobbyNPCManager;
@@ -107,17 +106,13 @@ public class EventManager extends JavaPlugin implements Listener{
 		pm.registerEvents(new NickCommand(), this);
 		pm.registerEvents(new LobbyEventManager(), this);
 		pm.registerEvents(new LobbyCosmetics(), this);
-		pm.registerEvents(new LobbyChatCensor(), this);
 		this.getCommand("nick").setExecutor(new NickCommand());
 		this.getCommand("gm").setExecutor(new Commands());
 		this.getCommand("npc").setExecutor(new LobbyNPCManager());
 		this.getCommand("kick").setExecutor(new ModeratorCommands());
 		this.getCommand("mute").setExecutor(new ModeratorCommands());
 
-	    
-	    
-		//TODO changer le nom : déja utilisé par le serveur
-		//this.getCommand("ban").setExecutor(new ModeratorCommands());
+	   
 	}
 	
 	public static EventManager getPlugin(){
