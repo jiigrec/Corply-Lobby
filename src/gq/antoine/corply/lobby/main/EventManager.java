@@ -1,7 +1,17 @@
 package gq.antoine.corply.lobby.main;
 
+import gq.antoine.corply.commands.Commands;
+import gq.antoine.corply.moderator.ModeratorCommands;
+import gq.antoine.corply.utils.MethodUtils;
+import gq.antoine.lobby.LobbyCosmetics;
+import gq.antoine.lobby.LobbyEventManager;
+import gq.antoine.lobby.LobbyNPCManager;
+import gq.antoine.lobby.corplymember.NickCommand;
+
 import java.io.File;
 import java.io.IOException;
+
+import net.md_5.bungee.api.ChatColor;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
@@ -13,16 +23,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import gq.antoine.corply.commands.Commands;
-import gq.antoine.corply.gui.GUIs;
-import gq.antoine.corply.moderator.ModeratorCommands;
-import gq.antoine.corply.utils.MethodUtils;
-import gq.antoine.lobby.LobbyCosmetics;
-import gq.antoine.lobby.LobbyEventManager;
-import gq.antoine.lobby.LobbyNPCManager;
-import gq.antoine.lobby.corplymember.NickCommand;
-import net.md_5.bungee.api.ChatColor;
 
 public class EventManager extends JavaPlugin implements Listener{
 	
@@ -101,7 +101,6 @@ public class EventManager extends JavaPlugin implements Listener{
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		Bukkit.getPluginManager().registerEvents(this, this);
 		pm.registerEvents(new MethodUtils(), this);
-		pm.registerEvents(new GUIs(), this);
 		pm.registerEvents(new Commands(), this);
 		pm.registerEvents(new NickCommand(), this);
 		pm.registerEvents(new LobbyEventManager(), this);
@@ -111,6 +110,7 @@ public class EventManager extends JavaPlugin implements Listener{
 		this.getCommand("npc").setExecutor(new LobbyNPCManager());
 		this.getCommand("kick").setExecutor(new ModeratorCommands());
 		this.getCommand("mute").setExecutor(new ModeratorCommands());
+		
 
 	   
 	}

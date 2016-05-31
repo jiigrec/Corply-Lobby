@@ -9,7 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -35,10 +34,6 @@ public class LobbyEventManager implements Listener{
 	private HashMap <Player, Integer> players = new HashMap<Player, Integer>();
 	public static Location jump = new Location(Bukkit.getWorld("Lobby"), 450.474, 157, 1114.464);
 	
-	@EventHandler 
-	public void onBreakBlock(BlockBreakEvent e){
-		e.setCancelled(true);
-	}
 	
 	@EventHandler 
 	public void onQuit(PlayerQuitEvent e){
